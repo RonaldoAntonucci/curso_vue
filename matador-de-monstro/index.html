@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Matador de Monstro</title>
+  <script src="https://unpkg.com/vue"></script>
+  <style>
+    body,
+    div {
+      margin: 0;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="desafio">
+    <div :style="panel">
+      <div :style="creature">
+        <h1>Jogador</h1>
+        <div :style="[bar]">
+          <div :style="[playerLife]"></div>
+          <div :style="[damage]"></div>
+        </div>
+        <span>50%</span>
+      </div>
+      <div :style="creature">
+        <h1>Monstro</h1>
+        <div :style="[bar]">
+          <div :style="[monsterLife]"></div>
+          <div :style="[damage]"></div>
+        </div>
+        <span>50%</span>
+      </div>
+    </div>
+    <div :style="actions">
+      <div>
+        <button :style="[button]" @click="ataque">ATAQUE</button>
+        <button :style="[button]">ATAQUE ESPECIAL</button>
+        <button :style="[button]">CURAR</button>
+        <button :style="[button]">SAIR</button>
+      </div>
+    </div>
+    <ul :style="log">
+      <li :style="logRow" v-for="log in logs">
+        <span>{{log.jogador}}</span>
+        <span>{{log.monstro}}</span>
+      </li>
+    </ul>
+  </div>
+
+</body>
+
+</html>
+<script src="app.js"></script>
