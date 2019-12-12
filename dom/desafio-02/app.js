@@ -4,10 +4,10 @@ new Vue({
         valor: '',
     },
     methods: {
-        exibirAlerta(){
+        exibirAlerta () {
             alert('Estou te alertando!');
         },
-        changeValue(v){
+        changeValue (v) {
             this.valor = v;
         }
     }
