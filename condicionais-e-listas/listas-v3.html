@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>listas v3</title>
+  <script src="https:unpkg.com/vue"></script>
+  <style>
+    ul {
+      list-style: none;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="app">
+    <ul>
+      <li v-for="(cor, i) in cores">{{i}}) {{cor}}</li>
+    </ul>
+    <hr>
+    <template v-for="(cor, i) in cores">
+      <h1>{{cor}}</h1>
+      <p>{{i}}</p>
+    </template>
+  </div>
+
+</body>
+
+</html>
+
+<script>
+  new Vue({
+    el: '#app',
+    data: {
+      cores: ['vermelho', 'verde', 'amarelo', 'azul'],
+      pessoas: [
+        {
+          nome: 'Ana',
+          idade: 26,
+          peso: 59
+        },
+        {
+          nome: 'Guilherme',
+          idade: 22,
+          peso: 89
+        }
+      ]
+    }
+  })
+</script>
