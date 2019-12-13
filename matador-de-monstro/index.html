@@ -24,7 +24,7 @@
           <div :style="[playerLife]"></div>
           <div :style="[damage]"></div>
         </div>
-        <span>50%</span>
+        <span>{{pLife}}%</span>
       </div>
       <div :style="creature">
         <h1>Monstro</h1>
@@ -32,21 +32,24 @@
           <div :style="[monsterLife]"></div>
           <div :style="[damage]"></div>
         </div>
-        <span>50%</span>
+        <span>{{mLife}}%</span>
       </div>
     </div>
-    <div :style="actions">
+    <div :style="actions" v-if="!gameOver">
       <div>
-        <button :style="[button]" @click="ataque">ATAQUE</button>
-        <button :style="[button]">ATAQUE ESPECIAL</button>
-        <button :style="[button]">CURAR</button>
-        <button :style="[button]">SAIR</button>
+        <button :style="[button, red]" @click="ataque">ATAQUE</button>
+        <button :style="[button, orange]" @click="ataEspecial">ATAQUE ESPECIAL</button>
+        <button :style="[button, green]" @CLICK="curar">CURAR</button>
+        <button :style="[button, grey]" @click="sair">SAIR</button>
       </div>
+    </div>
+    <div :style="final" v-else>
+      <h1>{{gameOver}}</h1>
+      <button :style="[button, blue]" @click="newGame">Iniciar novo jogo</button>
     </div>
     <ul :style="log">
-      <li :style="logRow" v-for="log in logs">
-        <span>{{log.jogador}}</span>
-        <span>{{log.monstro}}</span>
+      <li :style="logRow" v-for="(log, i) in logs" :key="i + log">
+        <span :style="[(i % 2 === 0 ) ? blue : red, logContent]">{{log}}</span>
       </li>
     </ul>
   </div>
