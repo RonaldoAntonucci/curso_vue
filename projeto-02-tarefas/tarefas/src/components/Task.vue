@@ -4,7 +4,11 @@
     class="task"
     @click="()=> setFinished(task.name)"
   >
-    <h1>{{task.name}}</h1>
+    <span
+      class="close"
+      :styled="isFInished"
+    >x</span>
+    <p>{{task.name}}</p>
   </li>
 </template>
 
@@ -22,8 +26,28 @@ export default {
   },
   computed: {
     finished () {
+      if (this.task.finished) {
+        return {
+          color: '#DDD',
+          borderLeft: '12px solid #0a8f08',
+          backgroundColor: '#4caf50',
+          textDecoration: 'line-through'
+        }
+
+      }
       return {
-        backgroundColor: this.task.finished ? 'green' : 'red'
+        backgroundColor: '#f44336',
+        borderLeft: '12px solid #b73229'
+      }
+    },
+    isFinished () {
+      if (this.task.finished) {
+        return { backgroundColor: '#0a8f08', }
+
+      }
+
+      return {
+        backgroundColor: '#b73229 !important',
       }
     }
   }
@@ -32,17 +56,30 @@ export default {
 
 <style>
 .task {
+  box-sizing: border;
+  padding: 10px;
   display: flex;
-  border-radius: 5px;
-  width: 250px;
+  border-radius: 8px;
+  width: 350px;
   height: 150px;
   align-items: center;
   justify-content: center;
   overflow: hidden;
+  font-size: 2rem;
+  font-weight: 300;
+  cursor: pointer;
+  user-select: none;
+  position: relative;
 }
 
-.task h1 {
-  font-size: 25px;
-  max-width: 200px;
+.close {
+  position: absolute;
+  right: 5px;
+  top: 1px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  height: 20px;
+  width: 20px;
+  border-radius: 10px;
 }
 </style>
